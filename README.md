@@ -1,4 +1,4 @@
-##### Blackjack
+# Blackjack
 
 A blackjack game made with Python, along with the Pygame module.
 
