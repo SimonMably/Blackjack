@@ -61,12 +61,12 @@ class Deck:
             ("King of Clubs", 10, "images/cards/king_clubs.png")
             ]
 
-
-
-
-
-
-
+    def shuffle_deck(self):
+        random.shuffle(self.playing_deck)
+    
+    # Get to work properly
+    def blitme(self):
+        self.screen.blit(self.deck.playing_deck)
 
 
 
