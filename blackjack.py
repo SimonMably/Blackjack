@@ -2,10 +2,8 @@ import pygame as pg
 import random
 import sys
 
-from hand import Hand
 from deck import Deck
 from card import Card
-from dealer import Dealer
 
 # Main Game File.
 
@@ -30,12 +28,12 @@ class Blackjack:
 
         self.screen = pg.display.set_mode((S_WIDTH, S_HEIGHT))
         pg.display.set_caption("Blackjack")
-
+        """
         self.deck = Deck()
         self.card = Card()
         self.dealer = Dealer()
         self.hand = Hand()
-
+        """
         pg.display.update()
 
     def run_game(self):
@@ -43,16 +41,10 @@ class Blackjack:
         while True:
             self._check_events()
             self._update_screen()
-            
-            player_hand = []
-            player_score = 0
-            dealer_hand = []
-            dealer_score = 0
 
     def _update_screen(self):
         """Update images ont he screen and flip to the new screen."""
         self.screen.fill(BG_COLOUR)
-        self.deck.blitme()
         pg.display.flip()
 
     def _check_events(self):

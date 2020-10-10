@@ -6,7 +6,7 @@ class Deck:
 
     def __init__(self):
         """Initialise attributes for the Deck class."""
-        self.playing_deck = [
+        '''self.playing_deck = [
             ("Ace of Hearts", 11, "images/cards/ace_hearts.png"),
             ("2 of Hearts", 2, "images/cards/two_hearts.png"),
             ("3 of Hearts", 3, "images/cards/three_hearts.png"),
@@ -59,7 +59,9 @@ class Deck:
             ("Jack of Clubs", 10, "images/cards/jack_clubs.png"),
             ("Queen of Clubs", 10, "images/cards/queen_clubs.png"),
             ("King of Clubs", 10, "images/cards/king_clubs.png")
-            ]
+            ]'''
+
+            
 
     def shuffle_deck(self):
         random.shuffle(self.playing_deck)
