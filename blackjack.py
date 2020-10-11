@@ -4,6 +4,7 @@ import sys
 
 from deck import Deck
 from card import Card
+from player import Player
 
 # Main Game File.
 
@@ -28,12 +29,10 @@ class Blackjack:
 
         self.screen = pg.display.set_mode((S_WIDTH, S_HEIGHT))
         pg.display.set_caption("Blackjack")
-        """
         self.deck = Deck()
         self.card = Card()
-        self.dealer = Dealer()
-        self.hand = Hand()
-        """
+        self.player = Player()
+
         pg.display.update()
 
     def run_game(self):

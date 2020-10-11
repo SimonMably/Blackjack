@@ -1,0 +1,41 @@
+
+
+class Player(object):
+    """Class representing the player."""
+    pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
