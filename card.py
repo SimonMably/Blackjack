@@ -2,7 +2,7 @@ import pygame as pg
 import random
 
 class Card(object):
-    """Class resembling a card."""
+    """Class representing a card or cards."""
 
     def __init__(self, value, suit):
         """Initialise the attribute for the card class."""
@@ -12,8 +12,8 @@ class Card(object):
         
         card_images = {}
         for suit in self.suits:
-            for symbol in self.values.keys():
-                card_name = f"{suit}_{symbol}"
+            for value in self.values.keys():
+                card_name = f'{suit}_{value}'
                 folder_name = pg.image.load(f'cards/{card_name}.png')
                 card_images[card_name] = folder_name
 
@@ -24,6 +24,10 @@ class Card(object):
         # Dealer cards
         self.dealer_cards = []
         self.dealer_score = 0
+
+    def show(self):
+        """Placeholder Function"""
+        print(f'{self.values} of {self.suits}')
 
     # Get to work properly
     def blitme(self):
