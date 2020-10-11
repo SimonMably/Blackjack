@@ -7,4 +7,4 @@ and Pygame.
 
 ### Resources I used to help me figure stuff out:
     1. "Python OOP - Deck of Cards" by Executed Binary (YouTube)
-    1. Various GitHub repositories, Stack Overflow and various other websites.
+    2. Various GitHub repositories, Stack Overflow and various other websites.
