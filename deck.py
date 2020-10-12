@@ -33,7 +33,7 @@ class Deck(object):
         """
         for c in self.cards:
             c.show()  # May be possible to call blitme() function from Card()
-                      # here. 
+                      # here. Could replace show() method with blitme() method.
     
     def shuffle_deck(self):
         """Uses the Fisher–Yates shuffle algorithm to shuffle deck of cards."""
