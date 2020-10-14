@@ -29,7 +29,8 @@ class Blackjack:
 
         self.screen = pg.display.set_mode((S_WIDTH, S_HEIGHT))
         pg.display.set_caption("Blackjack")
-        self.deck = Deck()
+
+         Deck()
         self.card = Card()
         self.player = Player()
 
@@ -57,6 +58,11 @@ class Blackjack:
     def _check_keydown_events(self, event):
         """Respond to keypresses."""
         if event.key == pg.K_q:
+            ### Add a feature that gets game to ask the user if they really want
+            ### to quit. Implement using an if statement. 
+            ### (This is a precaution - in case user presses the 'q' key 
+            ### accidentally)
+ 
             # Press 'q' on keyboard to exit the game.
             sys.exit()
 

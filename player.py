@@ -1,6 +1,6 @@
 from deck import Deck
 
-class Player(object):
+class Player:
     """Class representing the player."""
     
     def __init__(self, name):
