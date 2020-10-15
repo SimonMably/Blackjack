@@ -30,7 +30,7 @@ class Blackjack:
         self.screen = pg.display.set_mode((S_WIDTH, S_HEIGHT))
         pg.display.set_caption("Blackjack")
 
-         Deck()
+        self.deck = Deck()
         self.card = Card()
         self.player = Player()
 

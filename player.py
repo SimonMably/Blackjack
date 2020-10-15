@@ -5,7 +5,7 @@ class Player:
     
     def __init__(self, name):
         """Initialise attributes for the Player class."""
-        self.name
+        self.name = name
         self.hand = []
 
     def draw(self, deck):

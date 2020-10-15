@@ -4,7 +4,7 @@ import random
 class Card:
     """Class representing a card or cards."""
 
-    def __init__(self, value, suit):
+    def __init__(self, values, suits, image):
         """Initialise the attribute for the card class."""
         self.suits = {'S':'spades', 'H':'hearts', 'D':'diamonds', 'C': 'clubs'}
         self.values = {'2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, 
@@ -20,6 +20,7 @@ class Card:
                 card_images[card_name] = folder_name
         """
 
+        
         # Player cards
         self.player_cards = []
         self.player_score = 0
@@ -28,13 +29,18 @@ class Card:
         self.dealer_cards = []
         self.dealer_score = 0
 
+        # Variable that stores card images in dict.
+        self.card_images = {}
+
+        self.image = image
+        self.rect = image.get_rect()
+
     def get_card_image(self):
-        card_images = {}
         for suit in self.suits.values():
             for value in self.values.keys():
                 card_name = f'{value}_{suit}'
                 folder_name = pg.image.load(f'cards/{card_name}.png')
-                card_images[card_name] = folder_name
+                self.card_images[card_name] = folder_name
 
     def show(self):
         """Placeholder Function
@@ -45,7 +51,7 @@ class Card:
     # Get to work properly
     def blitme(self):
         """Draws the cards onto the screen."""
-        self.screen.blit(self.deck.playing_deck)
+        self.screen.blit(self.get_card_image())
 
 
 
