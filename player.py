@@ -14,7 +14,7 @@ class Player:
 
     def show_hand(self):
         for card in self.hand:
-            card.show()  # Could possible replace this with the blitme() 
+            card.blitme()  # Could possible replace this with the blitme() 
                          # function.
 
     def discard(self):

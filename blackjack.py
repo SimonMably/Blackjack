@@ -5,34 +5,28 @@ import sys
 from deck import Deck
 from card import Card
 from player import Player
+from settings import Settings
 
 # Main Game File.
-
-# -----------------------------------------------------------------------------
-
-# Game Settings
-# Screen dimensions:
-S_HEIGHT = 750
-S_WIDTH = 1200
-
-# Background colour:
-BG_COLOUR = (0, 150, 0)
-
-# -----------------------------------------------------------------------------
 
 class Blackjack:
     """Overal class to manage the blackjack game assetts and behaviour."""
 
-    def __init__(self):
+    def __init__(self, b_game):
         """Initialise the game and create game resources."""
         pg.init()
+        self.settings = Settings()
 
-        self.screen = pg.display.set_mode((S_WIDTH, S_HEIGHT))
+        self.screen = pg.display.set_mode((self.settings.screen_width, 
+                                            self.settings.screen_height))
         pg.display.set_caption("Blackjack")
 
         self.deck = Deck()
         self.card = Card()
         self.player = Player()
+
+        # b_game == blackjack game
+        self.b_game = b_game
 
         pg.display.update()
 
@@ -59,7 +53,7 @@ class Blackjack:
         """Respond to keypresses."""
         if event.key == pg.K_q:
             ### Add a feature that gets game to ask the user if they really want
-            ### to quit. Implement using an if statement. 
+            ### to quit. Implement using an if statement??
             ### (This is a precaution - in case user presses the 'q' key 
             ### accidentally)
  
