@@ -5,14 +5,14 @@ import sys
 from deck import Deck
 from card import Card
 from player import Player
+from dealer import Dealer
 from settings import Settings
 
 # Main Game File.
-
 class Blackjack:
     """Overal class to manage the blackjack game assetts and behaviour."""
 
-    def __init__(self, b_game):
+    def __init__(self):
         """Initialise the game and create game resources."""
         pg.init()
         self.settings = Settings()
@@ -24,9 +24,7 @@ class Blackjack:
         self.deck = Deck()
         self.card = Card()
         self.player = Player()
-
-        # b_game == blackjack game
-        self.b_game = b_game
+        self.dealer = Dealer()
 
         pg.display.update()
 
@@ -38,7 +36,7 @@ class Blackjack:
 
     def _update_screen(self):
         """Update images ont he screen and flip to the new screen."""
-        self.screen.fill(BG_COLOUR)
+        self.screen.fill(self.bg_color)
         pg.display.flip()
 
     def _check_events(self):

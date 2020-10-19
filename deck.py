@@ -19,7 +19,7 @@ class Deck:
             for value in self.values[self.card.value]:
                 #pass  # FIGURE OUT HOW TO DO THIS.
                       # THEN, SEE IF THIS FUNCTION WORKS.
-                self.cards.append(Card(suit, value))
+                self.cards.append(Card(self.suit, self.value))
                 # print(f"{self.value} of {self.suits}") ## May not need.
                 # ^^^ Convert this into something that Pygame can use
 

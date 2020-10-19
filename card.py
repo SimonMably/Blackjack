@@ -4,8 +4,8 @@ import random
 
 class Card:
     """Class representing a card or cards."""
-
-    def __init__(self, values, suits, image, b_game):
+    #  values, suits, <--- include in __init__ method parameters
+    def __init__(self, image, b_game):
         """Initialise the attribute for the card class."""
         self.suits = {'S':'spades', 'H':'hearts', 'D':'diamonds', 'C': 'clubs'}
         self.values = {'2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, 
@@ -28,7 +28,7 @@ class Card:
         self.card_images = {}
 
         self.image = image
-        self.rect = image.get_rect()
+        self.rect = self.image.get_rect()
 
         # Position of the cards on the screen
         # Player cards position:
@@ -61,7 +61,7 @@ class Card:
     # ^ Alter blitme method to acommodate this. ^
     def blitme(self):
         """Draws the cards onto the screen."""
-        self.screen.blit(self.get_card_image(), self.rect)
+        self.screen.blit(self.get_card_image(self.hand), self.rect)
 
 
 
