@@ -50,13 +50,17 @@ class Blackjack:
     def _check_keydown_events(self, event):
         """Respond to keypresses."""
         if event.key == pg.K_q:
+            # May have to replace input() with buttons????
+            ask_quit = input("Do yourealy want to quit the game? y/n")
+            if ask_quit == "y":
+                sys.exit()
             ### Add a feature that gets game to ask the user if they really want
             ### to quit. Implement using an if statement??
             ### (This is a precaution - in case user presses the 'q' key 
             ### accidentally)
  
             # Press 'q' on keyboard to exit the game.
-            sys.exit()
+            
 
 if __name__ == '__main__':
     game = Blackjack()

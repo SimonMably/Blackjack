@@ -17,7 +17,7 @@ class Dealer:
 
     def show_hand(self):
         for card in self.hand:
-            card.blitme()  # Could possible replace this with the blitme() 
+            self.card.blitme()  # Could possible replace this with the blitme() 
                          # function.
 
     def discard(self):

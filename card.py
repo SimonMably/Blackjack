@@ -50,6 +50,22 @@ class Card:
                 card_name = f'{value}_{suit}'
                 folder_name = pg.image.load(f'cards/{card_name}.png')
                 self.card_images[card_name] = folder_name
+        """
+        # Another way to load cards
+
+        card_images_names = ['ace_heart', 'ace_spades', 'ace_club'] # etc
+        # a dictionary to store the images with names
+        card_images = {}
+        # loop through image names, construct the filename and load them as Surfaces
+        for name in card_images_names:
+            filename = f'cards/{name}.png'
+            card_images[name] = pg.image.load(filename).convert()
+            
+        # Now you have a dictionary of image surfaces that you can blit like this:
+        screen.blit(card_images['ace_heart'], (x, y))
+        """
+
+        
 
     def show(self):
         """Placeholder Function
