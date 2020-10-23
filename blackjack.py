@@ -16,8 +16,15 @@ class Blackjack:
     def __init__(self):
         """Initialise the game and create game resources."""
         pg.init()
-        self.settings = Settings()
 
+        # Class Attributes
+        self.settings = Settings()
+        self.card = Card()
+        self.player = Player()
+        self.dealer = Dealer()
+        self.deck = Deck()
+
+        # Display settings (window size, caption and icon)
         self.screen = pg.display.set_mode((self.settings.screen_width, 
                                             self.settings.screen_height))
         pg.display.set_caption("Blackjack")
@@ -31,7 +38,10 @@ class Blackjack:
         while True:
             self._check_events()
             self._update_screen()
-        
+            self.deck.build_deck()  # Check to see if this would print cards in
+                                    # cards list (in Deck class)
+                                        # 1. Sort out self.suits & self.values
+                                        #    in Card class first.
 
     def _update_screen(self):
         """Updade images on the screen and flip to the new screen."""
