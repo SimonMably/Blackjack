@@ -1,4 +1,10 @@
+# Imports
+
 import random
+
+# -----------------------------------------------------------------------------
+
+# Classes
 
 class Card:
     def __init__(self, suit, value):
@@ -19,7 +25,6 @@ class Deck:
             # v == value
             for v in range(1, 14):
                 self.cards.append(Card(s, v))
-                print(f"{v} of {s}")
 
     def show(self):
         for card in self.cards:
@@ -32,7 +37,7 @@ class Deck:
             r = random.randint(0, i)
             self.cards[i], self.cards[r] = self.cards[r], self.cards[i]
 
-    def drawCard(self):
+    def draw_card(self):
         return self.cards.pop()
 
 class Player:
@@ -41,23 +46,39 @@ class Player:
         self.hand = []
 
     def draw(self, deck):
-        self.append(deck.drawCard())
+        self.hand.append(deck.draw_card())
+        return self  # Will be able to draw multiple cards.
 
     def showHand(self):
         for card in self.hand:
             card.show()
 
+    def discard(self):
+        return self.hand.pop()
+        # Could add logic to this. For example, this method could take a suit
+        # and a value, the logic can find out if a card in player hand matches
+        # the suit/value and discard the card if it is in the players hand.
+
+
+# -----------------------------------------------------------------------------
+
+# Class Instances
 
 #card = Card("Clubs", 6)
 # card.show()
 
 deck = Deck()
 deck.shuffle()
+#deck.show()
 
 simon = Player("Simon")
-simon.draw(deck)
+simon.draw(deck).draw(deck)  # Draws 2 cards.
+simon.showHand()
+
+# discard() will remove the last card in players hand
+simon.discard()
 simon.showHand()
 
 
-card = deck.drawCard()
-card.show()
+#card = deck.drawCard()
+#card.show()
