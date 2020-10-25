@@ -1,62 +1,63 @@
-"""The main game file for blackjack."""
-
-import pygame as pg
 import random
-import sys
 
-from deck import Deck
-from card import Card
-from player import Player
-from dealer import Dealer
-from settings import Settings
+class Card:
+    def __init__(self, suit, value):
+        self.suit = suit
+        self.value = value
 
-class Blackjack:
-    """Overall class to manage the blackjack game assets and behaviour."""
+    def show(self):
+        print(f"{self.value} of {self.suit}")
 
+class Deck:
     def __init__(self):
-        """Initialise the game and create game resources."""
-        pg.init()
+        self.cards = []
+        self.build_deck()
 
-        # Class Attributes
-        self.settings = Settings()
-        self.card = Card()
-        self.player = Player()
-        self.dealer = Dealer()
-        self.deck = Deck()
+    def build_deck(self):
+        # s == suit
+        for s in ["Spades", "Clubs", "Diamonds", "Hearts"]:
+            # v == value
+            for v in range(1, 14):
+                self.cards.append(Card(s, v))
+                print(f"{v} of {s}")
 
-        # Display settings (window size, caption and icon)
-        self.screen = pg.display.set_mode((self.settings.screen_width, 
-                                            self.settings.screen_height))
-        pg.display.set_caption("Blackjack")
-        
-        game_icon = pg.image.load('C:/Users/Simon/Desktop/projects/python_projects/blackjack/images/icons/ace_cards.png')
-        pg.display.set_icon(game_icon)
-        
-    
-    def run_game(self):
-        """Start the main loop for the game."""
-        while True:
-            self._check_events()
-            self._update_screen()
-            self.deck.build_deck()  # Check to see if this would print cards in
-                                    # cards list (in Deck class)
-                                        # 1. Sort out self.suits & self.values
-                                        #    in Card class first.
+    def show(self):
+        for card in self.cards:
+            card.show()
 
-    def _update_screen(self):
-        """Updade images on the screen and flip to the new screen."""
-        self.screen.fill(self.settings.bg_colour)
-        pg.display.flip()
-        
-    def _check_events(self):
-        """Respond to key presses and mouse events."""
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                sys.exit()
-            
-        
-        
-        
-if __name__ == '__main__':
-    game = Blackjack()
-    game.run_game()
+    def shuffle(self):
+        # Uses the Fisher Yates Shuffle algorithm to shuffle the deck of cards.
+        for i in range(len(self.cards) -1, 0, -1):
+            # r == random number
+            r = random.randint(0, i)
+            self.cards[i], self.cards[r] = self.cards[r], self.cards[i]
+
+    def drawCard(self):
+        return self.cards.pop()
+
+class Player:
+    def __init__(self, name):
+        self.name = name
+        self.hand = []
+
+    def draw(self, deck):
+        self.append(deck.drawCard())
+
+    def showHand(self):
+        for card in self.hand:
+            card.show()
+
+
+#card = Card("Clubs", 6)
+# card.show()
+
+deck = Deck()
+deck.shuffle()
+
+simon = Player("Simon")
+simon.draw(deck)
+simon.showHand()
+
+
+card = deck.drawCard()
+card.show()
