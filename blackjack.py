@@ -1,12 +1,11 @@
 # Imports
-
 import random
 
 # -----------------------------------------------------------------------------
-
 # Classes
 
 class Card:
+    """Class represents a playing card."""
     def __init__(self, suit, value):
         self.suit = suit
         self.value = value
@@ -15,6 +14,7 @@ class Card:
         print(f"{self.value} of {self.suit}")
 
 class Deck:
+    """Class represents a deck of cards."""
     def __init__(self):
         self.cards = []
         self.build_deck()
@@ -41,6 +41,7 @@ class Deck:
         return self.cards.pop()
 
 class Player:
+    """Class represents the player."""
     def __init__(self, name):
         self.name = name
         self.hand = []
@@ -49,7 +50,7 @@ class Player:
         self.hand.append(deck.draw_card())
         return self  # Will be able to draw multiple cards.
 
-    def showHand(self):
+    def show_hand(self):
         for card in self.hand:
             card.show()
 
@@ -59,9 +60,22 @@ class Player:
         # and a value, the logic can find out if a card in player hand matches
         # the suit/value and discard the card if it is in the players hand.
 
+class Dealer:
+    """Class represents the dealer."""
+    def __init__(self, name='dealer'):
+        self.hand = []
+
+    def draw(self, deck):
+        self.hand.append(deck.draw_card())
+        return self
+
+    def show_hand(self):
+        for card in self.hand:
+            card.show()
+
 
 # -----------------------------------------------------------------------------
-
+"""
 # Class Instances
 
 #card = Card("Clubs", 6)
@@ -71,14 +85,26 @@ deck = Deck()
 deck.shuffle()
 #deck.show()
 
+print("Player: Simon")
 simon = Player("Simon")
 simon.draw(deck).draw(deck)  # Draws 2 cards.
-simon.showHand()
+simon.show_hand()
 
 # discard() will remove the last card in players hand
 simon.discard()
-simon.showHand()
+simon.show_hand()
+
+print("\nDealer")
+dealer = Dealer()
+dealer.draw(deck).draw(deck)
+dealer.show_hand()
+"""
 
 
-#card = deck.drawCard()
-#card.show()
+
+
+
+
+
+
+
