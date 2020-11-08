@@ -7,3 +7,4 @@ I intend to add a GUI using pygame in the future.
 
 ### Resources I used to help me figure stuff out:
     1. "Python OOP - Deck of Cards" by Executed Binary (YouTube)
+    1. https://dev.to/nexttech/build-a-blackjack-command-line-game-3o4b

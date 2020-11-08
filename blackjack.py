@@ -13,13 +13,18 @@ class Card:
     def show(self):
         print(f"{self.value} of {self.suit}")
 
+# -----------------------------------------------------------------------------
+
 class Deck:
     """Class represents a deck of cards."""
     def __init__(self):
-        self.cards = []
-        self.build_deck()
+        self.cards = [Card(s, v) for s in ["Spades", "Clubs", "Hearts",
+                      "Diamonds"] for v in ["A", "2", "3", "4", "5", "6", 
+                      "7", "8", "9", "10", "J", "Q", "K"]]
+        #self.build_deck()
 
-    def build_deck(self):
+    def build_deck(self):  # MAY NOT USE 
+        """MAY NOT USE"""
         # s == suit
         for s in ["Spades", "Clubs", "Diamonds", "Hearts"]:
             # v == value
@@ -40,11 +45,17 @@ class Deck:
     def draw_card(self):
         return self.cards.pop()
 
+# -----------------------------------------------------------------------------
+
 class Player:
     """Class represents the player."""
     def __init__(self, name):
-        self.name = name
+        self.game = Game()
+        self.name = self.get_name(name)
         self.hand = []
+
+    def get_name(self):
+        self.game.get_name()
 
     def draw(self, deck):
         self.hand.append(deck.draw_card())
@@ -60,6 +71,8 @@ class Player:
         # and a value, the logic can find out if a card in player hand matches
         # the suit/value and discard the card if it is in the players hand.
 
+# -----------------------------------------------------------------------------
+
 class Dealer:
     """Class represents the dealer."""
     def __init__(self, name='dealer'):
@@ -73,6 +86,26 @@ class Dealer:
         for card in self.hand:
             card.show()
 
+# -----------------------------------------------------------------------------
+
+class Game:
+    """Main class for the game."""
+    def __init__(self):
+        """Initialise attributes."""
+        self.dealer = Dealer()
+        self.player = Player()
+        self.deck = Deck()
+        self.card = Card()
+
+    def play_game(self):
+        """Main game loop."""
+        while True:
+            self.get_name()
+
+    def get_name(self, name):
+        self.ask_name = str(input("Enter your name: "))
+        self.ask_name = self.player(name)
+        
 
 # -----------------------------------------------------------------------------
 """
@@ -99,12 +132,16 @@ dealer = Dealer()
 dealer.draw(deck).draw(deck)
 dealer.show_hand()
 """
+# -----------------------------------------------------------------------------
 
 
 
 
+# """
 
-
+if __name__ == '__main__':
+    blackjack = Game()
+    blackjack.play_game()
 
 
 
