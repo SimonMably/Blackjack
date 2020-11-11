@@ -1,14 +1,10 @@
-# Imports
 import random
 
-# -----------------------------------------------------------------------------
-# Classes
-
 class Card:
-    """Class represents a playing card."""
-    def __init__(self, suit, value):
+    """Class representing a card."""
+    def __init__(self, suit, val):
         self.suit = suit
-        self.value = value
+        self.value = val
 
     def show(self):
         print(f"{self.value} of {self.suit}")
@@ -16,132 +12,92 @@ class Card:
 # -----------------------------------------------------------------------------
 
 class Deck:
-    """Class represents a deck of cards."""
+    """Class representing a deck of cards."""
     def __init__(self):
-        self.cards = [Card(s, v) for s in ["Spades", "Clubs", "Hearts",
-                      "Diamonds"] for v in ["A", "2", "3", "4", "5", "6", 
-                      "7", "8", "9", "10", "J", "Q", "K"]]
-        #self.build_deck()
+        self.cards = []
+        self.build_deck()
 
-    def build_deck(self):  # MAY NOT USE 
-        """MAY NOT USE"""
-        # s == suit
-        for s in ["Spades", "Clubs", "Diamonds", "Hearts"]:
-            # v == value
-            for v in range(1, 14):
-                self.cards.append(Card(s, v))
-
+    def build_deck(self):
+        for suit in ["Hearts", "Diamonds", "Clubs", "Spades"]:
+            for value in range(1, 14):
+                if value == 1:
+                    value = "Ace"
+                if value == 11:
+                    value = "Jack"
+                if value == 12:
+                    value = "Queen"
+                if value == 13:
+                    value = "King"
+                self.cards.append(Card(suit, value))
+        # IDEA: Include if-else statements to turn the numbers (from range())
+        #       1, 11, 12, and 13 into 'Ace', 'Jack', 'Queen', and 'King'
+    
     def show(self):
         for card in self.cards:
             card.show()
-
+    
     def shuffle(self):
-        # Uses the Fisher Yates Shuffle algorithm to shuffle the deck of cards.
-        for i in range(len(self.cards) -1, 0, -1):
-            # r == random number
+        for i in range(len(self.cards)-1, 0, -1):
             r = random.randint(0, i)
             self.cards[i], self.cards[r] = self.cards[r], self.cards[i]
-
+    
     def draw_card(self):
+        # Removes card from the top of the deck (or end of the deck list).
+        # Return will return the removed card to whichever method called 
+            # draw_card()
         return self.cards.pop()
 
 # -----------------------------------------------------------------------------
 
 class Player:
-    """Class represents the player."""
+    """Class representing the player."""
     def __init__(self, name):
-        self.game = Game()
-        self.name = self.get_name(name)
+        self.name = name
         self.hand = []
-
-    def get_name(self):
-        self.game.get_name()
 
     def draw(self, deck):
         self.hand.append(deck.draw_card())
-        return self  # Will be able to draw multiple cards.
+        return self  # return self will allow the 'draw' method to be chained
 
     def show_hand(self):
         for card in self.hand:
             card.show()
-
+    
     def discard(self):
+        # Could add logic this method, eg. take in sui and value as arguments
+        # and look through player hand and discard certain card from player 
+        # hand, if there.
         return self.hand.pop()
-        # Could add logic to this. For example, this method could take a suit
-        # and a value, the logic can find out if a card in player hand matches
-        # the suit/value and discard the card if it is in the players hand.
 
 # -----------------------------------------------------------------------------
 
 class Dealer:
-    """Class represents the dealer."""
-    def __init__(self, name='dealer'):
-        self.hand = []
-
-    def draw(self, deck):
-        self.hand.append(deck.draw_card())
-        return self
-
-    def show_hand(self):
-        for card in self.hand:
-            card.show()
+    """Class representing the dealer."""
+    def __init__(self):
+        pass
 
 # -----------------------------------------------------------------------------
 
 class Game:
-    """Main class for the game."""
+    """Class managing the whole game."""
     def __init__(self):
-        """Initialise attributes."""
-        self.dealer = Dealer()
-        self.player = Player()
-        self.deck = Deck()
-        self.card = Card()
-
-    def play_game(self):
-        """Main game loop."""
-        while True:
-            self.get_name()
-
-    def get_name(self, name):
-        self.ask_name = str(input("Enter your name: "))
-        self.ask_name = self.player(name)
-        
+        pass
 
 # -----------------------------------------------------------------------------
-"""
-# Class Instances
 
 #card = Card("Clubs", 6)
-# card.show()
+#card.show()
 
 deck = Deck()
+#
 deck.shuffle()
 #deck.show()
 
-print("Player: Simon")
-simon = Player("Simon")
-simon.draw(deck).draw(deck)  # Draws 2 cards.
-simon.show_hand()
 
-# discard() will remove the last card in players hand
-simon.discard()
-simon.show_hand()
+#card = deck.draw_card()
+#card.show()
 
-print("\nDealer")
-dealer = Dealer()
-dealer.draw(deck).draw(deck)
-dealer.show_hand()
-"""
-# -----------------------------------------------------------------------------
-
-
-
-
-# """
-
-if __name__ == '__main__':
-    blackjack = Game()
-    blackjack.play_game()
-
-
+bob = Player("Bob")
+bob.draw(deck).draw(deck)
+bob.show_hand()
 
