@@ -2,6 +2,7 @@ import random
 
 class Card:
     """Class representing a card."""
+    
     def __init__(self, suit, val):
         self.suit = suit
         self.value = val
@@ -13,6 +14,7 @@ class Card:
 
 class Deck:
     """Class representing a deck of cards."""
+
     def __init__(self):
         self.cards = []
         self.build_deck()
@@ -51,19 +53,23 @@ class Deck:
 
 class Player:
     """Class representing the player."""
+
     def __init__(self, name):
         self.name = name
         self.hand = []
 
     def draw(self, deck):
+        """Draws cards for the player."""
         self.hand.append(deck.draw_card())
         return self  # return self will allow the 'draw' method to be chained
 
     def show_hand(self):
+        """Shows cards in players hand."""
         for card in self.hand:
             card.show()
     
     def discard(self):
+        """Discards a card from players hand."""
         # Could add logic this method, eg. take in sui and value as arguments
         # and look through player hand and discard certain card from player 
         # hand, if there.
@@ -73,34 +79,70 @@ class Player:
 
 class Dealer:
     """Class representing the dealer."""
+
     def __init__(self):
         self.hand = []
 
     def draw(self, deck):
+        """Draws cards for the dealer."""
         self.hand.append(deck.draw_card())
         return self  # return self will allow the 'draw' method to be chained
 
     def show_hand(self):
+        """Shows cards in dealers hand."""
         for card in self.hand:
             card.show()
     
     def discard(self):
+        """Discards a card from dealers hand."""
         return self.hand.pop()
 
 # -----------------------------------------------------------------------------
 
 class Game:
     """Class managing the whole game."""
+
     def __init__(self):
+        """Initialise the Game class attributes."""
+        self.deck = Deck()
+        self.card = Card()
+        self.player = Player()
+        self.dealer = Dealer()
+
+        # True bool value for main game loop.
+        self.active_game = True
+
+    def run_game(self):
+        """Start the main loop for the game."""
+        while self.active_game:
+            pass
+
+    def hand_value(self):
+        """Keep track of value of all cards in player/dealer hand."""
         pass
+
+    def compare_hand_values(self):
+        """Compares the overall values for players and dealers hands."""
+        pass
+
+
 
 # -----------------------------------------------------------------------------
 
+if __name__ == '__main__':
+    game = Game()
+    game.run_game()
+
+# -----------------------------------------------------------------------------
+
+
+
+
+"""
 #card = Card("Clubs", 6)
 #card.show()
 
 deck = Deck()
-#
 deck.shuffle()
 #deck.show()
 
@@ -112,4 +154,4 @@ bob = Player("Bob")
 
 bob.draw(deck).draw(deck)
 bob.show_hand()
-
+"""
