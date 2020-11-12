@@ -98,6 +98,7 @@ deck.shuffle()
 #card.show()
 
 bob = Player("Bob")
+
 bob.draw(deck).draw(deck)
 bob.show_hand()
 
