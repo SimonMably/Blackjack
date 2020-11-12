@@ -74,7 +74,18 @@ class Player:
 class Dealer:
     """Class representing the dealer."""
     def __init__(self):
-        pass
+        self.hand = []
+
+    def draw(self, deck):
+        self.hand.append(deck.draw_card())
+        return self  # return self will allow the 'draw' method to be chained
+
+    def show_hand(self):
+        for card in self.hand:
+            card.show()
+    
+    def discard(self):
+        return self.hand.pop()
 
 # -----------------------------------------------------------------------------
 
