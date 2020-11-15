@@ -1,13 +1,17 @@
 import random
 
+# Classes
+
 class Card:
     """Class representing a card."""
     
-    def __init__(self, suit, val):
+    def __init__(self, suit, value):
+        """Initialise Card class attributes."""
         self.suit = suit
-        self.value = val
+        self.value = value
 
     def show(self):
+        """Prints a properly formatted playing card."""
         print(f"{self.value} of {self.suit}")
 
 # -----------------------------------------------------------------------------
@@ -16,10 +20,14 @@ class Deck:
     """Class representing a deck of cards."""
 
     def __init__(self):
+
+        """Initialise Deck class attributes."""
         self.cards = []
         self.build_deck()
 
     def build_deck(self):
+        """Builds deck of cards."""
+
         for suit in ["Hearts", "Diamonds", "Clubs", "Spades"]:
             for value in range(1, 14):
                 if value == 1:
@@ -54,7 +62,7 @@ class Deck:
 class Player:
     """Class representing the player."""
 
-    def __init__(self, name):
+    def __init__(self, name="Player"):
         self.name = name
         self.hand = []
 
@@ -80,7 +88,8 @@ class Player:
 class Dealer:
     """Class representing the dealer."""
 
-    def __init__(self):
+    def __init__(self, name="Dealer"):
+        self.name = name
         self.hand = []
 
     def draw(self, deck):
@@ -117,6 +126,11 @@ class Game:
         while self.active_game:
             pass
 
+    def start_new_game(self):
+        """Start a new game. 
+        If a game has been played, offer player the choice to play again."""
+        pass
+
     def hand_value(self):
         """Keep track of value of all cards in player/dealer hand."""
         pass
@@ -128,30 +142,41 @@ class Game:
 
 
 # -----------------------------------------------------------------------------
-
+'''
 if __name__ == '__main__':
     game = Game()
     game.run_game()
-
+'''
 # -----------------------------------------------------------------------------
 
-
-
-
 """
-#card = Card("Clubs", 6)
-#card.show()
+card = Card("Clubs", 6)
+card.show()
 
 deck = Deck()
 deck.shuffle()
-#deck.show()
+deck.show()
 
+print("\n")
 
-#card = deck.draw_card()
-#card.show()
+card = deck.draw_card()
+card.show()
 
-bob = Player("Bob")
-
-bob.draw(deck).draw(deck)
-bob.show_hand()
+print("\n")
 """
+deck = Deck()
+deck.shuffle()
+
+print("")
+
+player = Player()
+print(player.name)  # Prints the name 'Bob'
+player.draw(deck).draw(deck)
+player.show_hand()
+
+print("")
+
+dealer = Dealer()
+print(dealer.name)
+dealer.draw(deck).draw(deck)
+dealer.show_hand()
