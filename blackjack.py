@@ -82,6 +82,18 @@ class Player:
         # and look through player hand and discard certain card from player 
         # hand, if there.
         return self.hand.pop()
+    
+    def hit(self):
+        """Add new card to player hand."""
+        pass
+
+    def stay(self):
+        """End player turn."""
+        pass
+
+    def winner(self):
+        """Announce player win, end game and offer new game."""
+        pass
 
 # -----------------------------------------------------------------------------
 
@@ -105,6 +117,18 @@ class Dealer:
     def discard(self):
         """Discards a card from dealers hand."""
         return self.hand.pop()
+
+    def hit(self):
+        """Add new card to dealer hand."""
+        pass
+
+    def stay(self):
+        """End dealer turn."""
+        pass
+
+    def winner(self):
+        """Announce dealer win, end game and offer player new game."""
+        pass
 
 # -----------------------------------------------------------------------------
 
@@ -131,17 +155,31 @@ class Game:
         If a game has been played, offer player the choice to play again."""
         pass
 
-    def hand_value(self):
+    def calculate_hand(self):
         """Keep track of value of all cards in player/dealer hand."""
+        # Add values for all cards in Player hand.
+        # Add values for all cards in Dealer hand.
+
+        # IDEA: add the self.card.value for all card in player/dealer hand
+        #       to get overall hand value.
         pass
 
     def compare_hand_values(self):
         """Compares the overall values for players and dealers hands."""
+        # IF value of Player hand == 21 and value of Dealer hand <= 20
+            # or value of Player hand > value of Dealer hand, Player wins.
+        # IF value of Dealer hand == 21 and value of Player hand <= 20
+            # or value of Dealer hand > value of Player hand, Dealer wins.
+
+        # IDEA: add the self.card.value for all card in player/dealer hand
+        #       to get overall hand value.
         pass
 
 
 
 # -----------------------------------------------------------------------------
+
+# This will make sure that the game runs. FULLY OOP OPERATIONAL ONLY.
 '''
 if __name__ == '__main__':
     game = Game()
@@ -170,13 +208,13 @@ deck.shuffle()
 print("")
 
 player = Player()
-print(player.name)  # Prints the name 'Bob'
-player.draw(deck).draw(deck)
-player.show_hand()
+print(player.name)            # Prints the default name 'Player'
+player.draw(deck).draw(deck)  # Draws 2 random cards
+player.show_hand()            # Shows cards in Player hand.
 
 print("")
 
 dealer = Dealer()
-print(dealer.name)
-dealer.draw(deck).draw(deck)
-dealer.show_hand()
+print(dealer.name)            # Prints the default name 'Dealer'
+dealer.draw(deck).draw(deck)  # Draws 2 random cards
+dealer.show_hand()            # Shows cards in Dealer hand.
